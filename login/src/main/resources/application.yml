@@ -6,5 +6,5 @@ spring:
       ddl-auto: update
   datasource:
     url: jdbc:mysql://localhost:3306/shopper
-    username: yellow
-    password: yellow@123
+    username: root
+    password: root
