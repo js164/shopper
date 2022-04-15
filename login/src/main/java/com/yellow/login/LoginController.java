@@ -24,6 +24,11 @@ public class LoginController {
         return userRepo.save(user);
     }
     
+    @GetMapping("/userid/{userId}")
+    public Optional<User> getUserDetails(@PathVariable String userId) {
+    	return userRepo.findById(userId);
+    }
+    
     @PostMapping("/login")
     public User login(@RequestBody User user) throws NoSuchAlgorithmException {
     	user.password=this.digest(user.getPassword().getBytes(StandardCharsets.UTF_8));
@@ -35,10 +40,6 @@ public class LoginController {
     	}
     }
 
-    @GetMapping("/userid/{userId}")
-    public Optional<User> getUserDetails(@PathVariable String userId) {
-        return userRepo.findById(userId);
-    }
     
     @GetMapping("/remove/{userId}")
     public boolean removeUserDetail(@PathVariable String userId) {
